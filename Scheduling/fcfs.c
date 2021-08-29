@@ -13,6 +13,8 @@ struct done
 void main()
 {
   int i,j,n,num,idle=0;
+  float avwt=0;
+  float avtt=0;
   printf("ENTER THE NUMBER OF PROCESSES : ");
   scanf("%d",&n);
   for(i=0;i<n;i++)                         //Input process details
@@ -76,5 +78,9 @@ void main()
   {
     strcpy(p[i].name,"p1");
     printf("    %s\t\t\t%d\t\t\t%d\t\t\t%d\n",p[i].name,p[i].ct,p[i].wt,p[i].tt);
+    avwt+=p[i].wt;
+    avtt+=p[i].tt;
   }
+  printf("\nAVERAGE WAITING TIME : %f",(avwt/n));
+  printf("\nAVERAGE TURNAROUND TIME : %f\n",(avtt/n));
 }
