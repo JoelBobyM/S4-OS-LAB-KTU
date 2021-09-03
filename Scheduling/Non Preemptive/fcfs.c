@@ -74,25 +74,26 @@ void main()
     }
   }
   printf("\nPROCESS NAME\tCOMPLETION TIME (ms)\tWAITING TIME (ms)\tTURNAROUND TIME (ms)\n");
-  for(int i=0;i<4;i++)
+  for(int i=0;i<n;i++)
   {
     printf("    %s\t\t\t%d\t\t\t%d\t\t\t%d\n",p[i].name,p[i].ct,p[i].wt,p[i].tt);
     avwt+=p[i].wt;
     avtt+=p[i].tt;
   }
-  printf("\n\nGANTT CHART \n\n");
-      for(i=0;i<n;i++)
+  printf("\n\nGANTT CHART ");
+  printf("\n----------------------------------------------------------\n");
+      for(i=0;i<num;i++)
       {
           printf("|");
-          printf("%s\t",p[i].name);
+          printf("%s\t",d[i].name);
        }
        printf(" |");
        printf("\n----------------------------------------------------------\n");
-       printf("%d\t",p[0].at);
-       for(i=0;i<n;i++)
+       for(i=0;i<num;i++)
        {
-          printf("%d\t",d[i].ct);
+          printf("%d\t",d[i].st);
        }
-  printf("\nAVERAGE WAITING TIME : %f",(avwt/n));
+       printf("%d\t",d[num-1].ct);
+  printf("\n\nAVERAGE WAITING TIME : %f",(avwt/n));
   printf("\nAVERAGE TURNAROUND TIME : %f\n",(avtt/n));
 }
