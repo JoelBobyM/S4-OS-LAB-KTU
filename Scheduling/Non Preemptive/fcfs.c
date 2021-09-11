@@ -91,7 +91,7 @@ void main()
        printf("\n----------------------------------------------------------\n");
        for(i=0;i<num;i++)
        {
-          printf("%d\t",d[i].st);
+          printf("   %s\t",d[i].name);
        }
        printf("%d\t",d[num-1].ct);
   printf("\n\nAVERAGE WAITING TIME : %f",(avwt/n));
