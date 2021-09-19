@@ -48,6 +48,7 @@ void main()
       {
         d[num].ct=i;
         num++;
+        idle = 0;
       }
       strcpy(d[num].name,p[j].name);
       d[num].st = i;
@@ -59,7 +60,7 @@ void main()
       p[j].status = 1;
       j++;
       num++;
-      idle = 0;
+
     }
     else if(idle == 0)
     {
