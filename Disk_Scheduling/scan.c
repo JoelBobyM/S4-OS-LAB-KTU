@@ -76,5 +76,5 @@ void main()
     }
     total=total+diff;
   }
-  printf("\b\b. \nTOTAL HEAD MOVEMENTS : %d\n",total);
+  printf("\b\b.  \nTOTAL HEAD MOVEMENTS : %d\n",total);
 }
