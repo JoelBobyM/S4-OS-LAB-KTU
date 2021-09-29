@@ -61,7 +61,7 @@ void main()
   printf("TRAVERSED ORDER : ");
   for(i=0;i<p;i++)
   {
-    printf("%d, ",a[i]);
+    printf("%d => ",a[i]);
   }
   for(total=0,j=0;j<p-1;j++)
   {
