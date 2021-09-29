@@ -14,7 +14,7 @@ struct process
 }p[20],temp;
 void main()
 {
-  int i,j,r,pr,flag,ls,ml=0;
+  int i,j,r,pr,flag,ls,ml=0,g=0;
   char str[100] = "";
   printf("ENTER THE NUMBER OF RESOURCES : ");
   scanf("%d",&r);
@@ -72,7 +72,7 @@ void main()
     avail[i] = resmax[i] - maxalloc[i];
   }
   printf("\n\nORDER OF EXECUTION :- \n");
-  for(i=0,ls=0;ml<r;)
+  for(i=0,ls=0;ls<pr;)
   {
     for(flag = 0,j=0;j<r;j++)
     {
@@ -92,6 +92,7 @@ void main()
           ml++;
         }
       }
+      g++;
       ls++;
       printf("\t\t%s IS VISTED \n",p[i].name);
       strcat(str,p[i].name);
@@ -102,7 +103,13 @@ void main()
       i++;
       if(i==pr)
       {
+        if(g==0)
+        {
+          printf("\t\tREQUEST NOT ALLOCATED -- DEADLOCK OCCURED\n");
+          break;
+        }
         i=0;
+        g=0;
       }
     }
   }
@@ -112,7 +119,7 @@ void main()
     printf("\nSAFE STATE SEQUENCE : %s",str);
     printf("\b\b.  \n");
   }
-  else
+  else if(g==0)
   {
     printf("\nSYSTEM IS IN UNSAFE STATE\n");
   }
