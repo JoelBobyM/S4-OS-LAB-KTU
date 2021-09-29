@@ -1,92 +1,68 @@
-#include <stdio.h>
-#include <stdlib.h>
-int pno,fno,i,j,pg[100],fr[100];
-void input()
-{
-  printf("ENTER THE NUMBER OF PAGES : ");
-	scanf("%d",&pno); 
-	for(i=0;i<pno;i++)
-	{
-		printf("ENTER THE PAGE NUMBER %d: ",i+1);
-		scanf("%d",&pg[i]);
-	}
-	printf("ENTER THE NUMBER OF FRAMES : ");
-	scanf("%d",&fno);
-	for(i=0;i<fno;i++)
-	{
-		fr[i]=-1;
-	}
-}
-void lru()
-{
-  int fnd,k,top,stack[100],m;
-  printf("\n\tREFERENCE STRING\t PAGE NUMBER\t\t  STATUS\n");
-  for(m=0,k=0,i=0,top=-1;i<pno;i++)
-  {
-    for(fnd=0,j=0;j<fno;j++)
-    {
-      if(pg[i] == fr[j])
-      {
-        fnd = 1;
-        k=j;
-      }
-    }
-    if(fnd == 1)
-    {
-      for(;k<fno-1;k++)
-      {
-        stack[k] = stack[k+1];
-      }
-      stack[k] = pg[i];
-    }
-    else
-    {
-      if(m<fno)
-      {
-        top++;
-        stack[top] = pg[i];
-        fr[m] = pg[i];
-        m++;
-      }
-      else
-      {
-        for(j=0;j<fno;j++)
-        {
-          if(stack[0] == fr[j])
-          {
-            k=j;
-          }
-        }
-        fr[k] = pg[i];
-        for(k=0;k<fno-1;k++)
-        {
-          stack[k] = stack[k+1];
-          
-        }
-        stack[k] = pg[i];
-      }
-    }
-    
-    printf("\t\t%d\t\t  ",pg[i]);
-    for(j=0;j<fno;j++)
-    {
-      if(fr[j] != -1)
-			{
-				printf("%d   ",fr[j]);
-			}
-    }
-    if(fnd==1)
-		{
-			printf("\t\t    HIT\n");
-		}
-		else
-		{
-			printf("\t\t    MISS\n");
-		}
-	}
-}
+#include<stdio.h>
 void main()
 {
-	input();
-	lru();
+	int n,rs[25],f,m[10],next=1,count[30],pf=0,i,j,k,min,flag[30];
+	printf("Enter the length of string:");
+	scanf("%d",&n);
+	printf("Enter the reference string:");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&rs[i]);
+		flag[i]=0;
+	}
+	printf("Enter the no of frames:");
+	scanf("%d",&f);
+	for(i=0;i<f;i++)
+	{
+		m[i]=-1;
+		count[i]=0;
+	}
+	printf("Ref String\t   Page Frames\n");
+	for(i=0;i<n;i++)
+	{
+		printf("%d\t\t",rs[i]);
+		for(j=0;j<f;j++)
+		{
+			if(m[j]==rs[i])
+			{
+				for(k=0;k<f;k++)
+					printf("%d\t",rs[k]);
+				printf("\n");
+				flag[i]=1;
+				count[j]=next;
+				next++;
+			}
+		}
+		if(flag[i]==0)
+		{
+			if(i<f)
+			{
+				m[i]=rs[i];
+				count[i]=next;
+				next++;
+			}
+			else
+			{
+				min=0;
+				for(k=0;k<f;k++)
+				{
+					if(count[k]<count[min])
+						min=k;
+				}
+				m[min]=rs[i];
+				count[min]=next;
+				next++;
+			}
+			pf++;
+			for(j=0;j<f;j++)
+			{	
+			for(j=0;j<f;j++)
+			{
+				printf("%d\t",m[j]);
+			}
+			printf("\n");
+			}
+		}
+	}
+	printf("Page faults=%d\n",pf);
 }
