@@ -3,11 +3,11 @@ int n,m,i,j,h,p,temp,k,total=0;
 int t[100],a[100],diff;
 void main()
 {
-  printf("ENTER THE NUMBER OF TRACKS :");
+  printf("ENTER THE NUMBER OF TRACKS : ");
   scanf("%d",&n);
-  printf("ENTER THE HEAD POINTER POSITION :");
+  printf("ENTER THE HEAD POINTER POSITION : ");
   scanf("%d",&h);
-  printf("ENTER THE TRACKS TO BE TRAVERSED :");
+  printf("ENTER THE TRACKS TO BE TRAVERSED : ");
   for(i=0;i<n;i++)
   {
     scanf("%d",&t[i]);
@@ -76,5 +76,5 @@ void main()
     }
     total=total+diff;
   }
-  printf("\nTOTAL HEAD MOVEMENTS : %d\n",total);
+  printf("\b\b. \nTOTAL HEAD MOVEMENTS : %d\n",total);
 }
