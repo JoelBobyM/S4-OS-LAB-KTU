@@ -10,5 +10,5 @@ void main()
   if(a==0)
     printf("PROCESS SUCESSFULLY KILLED\n");
   else
-    printf("ERROR WHILE KILL OPERATION \n");
+    printf("ERROR WHILE KILL OPERATION : %d\n",a);
 }
