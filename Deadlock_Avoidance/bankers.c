@@ -18,7 +18,7 @@ void main()
   char str[100] = "";
   printf("ENTER THE NUMBER OF RESOURCES : ");
   scanf("%d",&r);
-  printf("MAXIMUM RESOURCE COUNT FOR :- \n");
+  printf("MAXIMUM RESOURCE COUNT FOR : \n");
   for(j=0;j<r;j++)
   {
     printf("\tRESOURCE %d : ",j+1);
