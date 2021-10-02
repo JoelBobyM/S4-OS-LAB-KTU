@@ -43,8 +43,7 @@ void main()
       {
         frames[i].content = page[i];
         frames[j].freq++;
-        frames[j].cnt = cnt;
-        cnt++;
+        frames[j].cnt = cnt++;
       }
       else
       {
@@ -61,8 +60,7 @@ void main()
         }
         frames[min].content = page[i];
         frames[min].freq = 1;
-        frames[min].cnt = cnt;
-        cnt++;
+        frames[min].cnt = cnt++;
       }
       pf++;
     }
