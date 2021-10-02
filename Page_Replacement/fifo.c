@@ -3,7 +3,7 @@ void main()
 {
 	int i,j,n,m,fnd,pg[100],fr[100],k=0,cnt=0;
 	printf("ENTER THE NUMBER OF PAGES : ");
-	scanf("%d",&n); 
+	scanf("%d",&n);
 	for(i=0;i<n;i++)
 	{
 		printf("ENTER THE PAGE NUMBER %d: ",i+1);
@@ -73,5 +73,4 @@ ENTER THE NUMBER OF FRAMES : 3
 					5						5   2   3   		 MISS
 
 PAGE FAULT : 4
-/*
-
+*/
