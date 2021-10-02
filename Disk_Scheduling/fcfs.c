@@ -23,5 +23,5 @@ void main()
 	printf("TRAVERSED ORDER : ");
 	for(i=0;i<n;i++)
 		printf("%d => ",tr[i]);
- 	printf("\b\b.  \nTOTAL HEAD MOVEMENTS : %d\n",sum);
+ 	printf("\b\b\b.   \nTOTAL HEAD MOVEMENTS : %d\n",sum);
 }
