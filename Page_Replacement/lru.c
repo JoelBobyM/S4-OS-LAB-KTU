@@ -1,68 +1,65 @@
 #include<stdio.h>
+struct frames
+{
+	int content,count;
+}frame[100];
 void main()
 {
-	int n,rs[25],f,m[10],next=1,count[30],pf=0,i,j,k,min,flag[30];
-	printf("Enter the length of string:");
-	scanf("%d",&n);
-	printf("Enter the reference string:");
-	for(i=0;i<n;i++)
+	int i,j,k,p,f,page[100],cnt=1,min,pf=0;
+	printf("ENTER THE NUMBER OF PAGES : ");
+	scanf("%d",&p);
+	printf("ENTER THE REFERENCING STRING : ");
+	for(i=0;i<p;i++)
 	{
-		scanf("%d",&rs[i]);
-		flag[i]=0;
+		scanf("%d",&page[i]);
 	}
-	printf("Enter the no of frames:");
+	printf("ENTER THE NUMBER OF FRAMES : ");
 	scanf("%d",&f);
 	for(i=0;i<f;i++)
 	{
-		m[i]=-1;
-		count[i]=0;
+		frame[i].content = -1;
+		frame[i].count = 0;
 	}
-	printf("Ref String\t   Page Frames\n");
-	for(i=0;i<n;i++)
+	printf("\nREFERENCING PAGE\tSTATUS\t\tFRAME CONTENT\n\n");
+	for(i=0;i<p;i++)
 	{
-		printf("%d\t\t",rs[i]);
+		printf("\t%d\t\t",page[i]);
 		for(j=0;j<f;j++)
 		{
-			if(m[j]==rs[i])
+			if(frame[j].content == page[i])
 			{
-				for(k=0;k<f;k++)
-					printf("%d\t",rs[k]);
-				printf("\n");
-				flag[i]=1;
-				count[j]=next;
-				next++;
+				printf("HIT\t\t");
+				frame[j].count = cnt++;
+				break;
 			}
 		}
-		if(flag[i]==0)
+		if(j==f)
 		{
+			printf("MISS\t\t");
 			if(i<f)
 			{
-				m[i]=rs[i];
-				count[i]=next;
-				next++;
+				frame[i].content = page[i];
+				frame[i].count = cnt++;
 			}
 			else
 			{
 				min=0;
 				for(k=0;k<f;k++)
 				{
-					if(count[k]<count[min])
-						min=k;
+					if(frame[k].count<frame[min].count)
+						min = k;
 				}
-				m[min]=rs[i];
-				count[min]=next;
-				next++;
+				frame[min].content = page[i];
+				frame[i].count = cnt++;
 			}
 			pf++;
-			for(j=0;j<f;j++)
-			{	
-			for(j=0;j<f;j++)
-			{
-				printf("%d\t",m[j]);
-			}
-			printf("\n");
-			}
 		}
+		for(j=0;j<f;j++)
+		{
+			if(frame[j].content !=-1)
+				printf("%d\t",frame[j].content);
+		}
+		printf("\n");
 	}
-	printf("Page faults=%d\n",pf);
+	printf("\nPAGE FAULT : %d\n",pf);
 }
