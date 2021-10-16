@@ -103,5 +103,6 @@ REFERENCING PAGE	STATUS		FRAME CONTENT
 	    2		         MISS		     3	0 	2
 
 TOTAL PAGE FAULT : 10
+ayinn
 
 */
