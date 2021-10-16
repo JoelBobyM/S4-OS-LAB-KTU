@@ -7,7 +7,7 @@ struct frame
 }frames[100];
 void main()
 {
-  int i,j,pg,fr,cnt,pf,min,page[100];
+  int i,j,pg,fr,cnt,pf,min,page[100],id=0;
   printf("ENTER THE NUMBER OF PAGES : ");
   scanf("%d",&pg);
   printf("ENTER THE REFERENCING STRING : ");
@@ -39,11 +39,12 @@ void main()
     if(j == fr)
     {
       printf("MISS\t\t");
-      if(i < fr)
+      if(id< fr)
       {
-        frames[i].content = page[i];
-        frames[j].freq++;
-        frames[j].cnt = cnt++;
+        frames[id].content = page[i];
+        frames[id].freq++;
+        frames[id].cnt = cnt++;
+	id++;
       }
       else
       {
