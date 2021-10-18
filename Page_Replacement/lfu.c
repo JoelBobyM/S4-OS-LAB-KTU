@@ -44,7 +44,11 @@ void main()
         frames[id].content = page[i];
         frames[id].freq++;
         frames[id].cnt = cnt++;
+<<<<<<< HEAD
         id++;
+=======
+	id++;
+>>>>>>> e5926a78d52407595872e76cf203c3a45db7ed11
       }
       else
       {
