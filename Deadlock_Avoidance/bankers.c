@@ -1,9 +1,11 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 int avail[100];
 int resmax[100];
 int maxalloc[100];
+int req[100];
 struct process
 {
   char name[100];
@@ -14,8 +16,8 @@ struct process
 }p[20],temp;
 void main()
 {
-  int i,j,r,pr,flag,ls,ml=0,g=0;
-  char str[100] = "";
+  int i,j,r,pr,flag,ls,ml=0,g=0,id;
+  char name[100],str[100] = "";
   printf("ENTER THE NUMBER OF RESOURCES : ");
   scanf("%d",&r);
   printf("MAXIMUM RESOURCE COUNT FOR : \n");
@@ -38,16 +40,65 @@ void main()
 
       printf("\tALLOCATED RESOURCE FOR RESOURCE %d : ",j+1);
       scanf("%d",&p[i].alloc[j]);
-      maxalloc[j] = maxalloc[j] + p[i].alloc[j];
 
-    }
-    for(j=0;j<r;j++)
-    {
+      maxalloc[j] = maxalloc[j] + p[i].alloc[j];
       p[i].need[j] = p[i].max[j] - p[i].alloc[j];
     }
     p[i].done = 0;
   }
-
+  for (i=0;i<r;i++)
+  {
+    avail[i] = resmax[i] - maxalloc[i];
+  }
+  printf("\nENTER THE NEW REQUEST : - \n\n");
+  printf("ENTER THE PROCESS NAME : ");
+  scanf("%s",name);
+  for(j=0;j<r;j++)
+  {
+      printf("\tREQUEST FOR RESOURCE %d : ",j+1);
+      scanf("%d",&req[j]);
+  }
+  for (i=0;i<pr;i++)
+  {
+      if(strcmp(p[i].name,name)==0)
+      {
+          id = i;
+          break;
+      }
+  }
+  for(flag=0,i=0;i<r;i++)
+  {
+      if(req[i] <= p[id].need[i])
+      {
+          flag++;
+      }
+  }
+  if(flag !=r)
+  {
+      printf("RESOURCE NOT GRANTED!! \nREQUESTED RESOURCE GREATER THAN NEEDED");
+      exit(0);
+  }
+  for(flag=0,i=0;i<r;i++)
+  {
+      if(req[i] <= avail[i])
+      {
+          flag++;
+      }
+  }
+  if(flag !=r)
+  {
+      printf("RESOURCE NOT GRANTED!! \nREQUESTED RESOURCE GREATER THAN AVAILABLE");
+      exit(0);
+  }
+  else if(flag == r)
+  {
+      for(i=0;i<r;i++)
+      {
+          p[id].alloc[i] =  p[id].alloc[i] + req[i];
+          p[id].need[i] =  p[id].need[i] - req[i];
+          avail[i] = avail[i] - req[i];
+      }
+  }
   printf("\n  PROCESS \tMAXIMUM \tALLOCATED \tREMAINING\n");
   for(i=0;i<pr;i++)
   {
@@ -67,10 +118,7 @@ void main()
       printf("%d ",p[i].need[j]);
     }
   }
-  for (i=0;i<r;i++)
-  {
-    avail[i] = resmax[i] - maxalloc[i];
-  }
+
   printf("\n\nORDER OF EXECUTION :- \n");
   for(i=0,ls=0;ls<pr;)
   {
