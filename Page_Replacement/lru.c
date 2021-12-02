@@ -51,7 +51,7 @@ void main()
 						min = k;
 				}
 				frame[min].content = page[i];
-				frame[i].count = cnt++;
+				frame[min].count = cnt++;
 			}
 			pf++;
 		}
