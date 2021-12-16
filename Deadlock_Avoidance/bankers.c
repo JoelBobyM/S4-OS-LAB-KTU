@@ -50,7 +50,7 @@ void main()
   {
     avail[i] = resmax[i] - maxalloc[i];
   }
-  printf("\nENTER THE NEW REQUEST : - \n\n");
+  printf("\nENTER THE NEW REQUEST :-  \n\n");
   printf("ENTER THE PROCESS NAME : ");
   scanf("%s",name);
   for(j=0;j<r;j++)
@@ -76,18 +76,6 @@ void main()
   if(flag !=r)
   {
       printf("RESOURCE NOT GRANTED!! \nREQUESTED RESOURCE GREATER THAN NEEDED");
-      exit(0);
-  }
-  for(flag=0,i=0;i<r;i++)
-  {
-      if(req[i] <= avail[i])
-      {
-          flag++;
-      }
-  }
-  if(flag !=r)
-  {
-      printf("RESOURCE NOT GRANTED!! \nREQUESTED RESOURCE GREATER THAN AVAILABLE");
       exit(0);
   }
   else if(flag == r)
